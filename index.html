@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff5b24" />
+    <title>Vipps Quest</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="game" aria-label="Vipps Quest platform game"></canvas>
+      <section class="help-card" aria-live="polite">
+        <span class="help-card__eyebrow">VIPPS QUEST</span>
+        <span id="message">Double-jump, use launch pads, collect coins and reach the flag.</span>
+      </section>
+      <section class="suit-dock" aria-label="Vippsi suit selector">
+        <span class="suit-dock__title">VIPPSI SUITS</span>
+        <button class="suit-button is-active" data-suit="tap" aria-pressed="true"><span>⌁</span>Tap<small>Dash</small></button>
+        <button class="suit-button" data-suit="scan" aria-pressed="false"><span>⌗</span>Scan<small>Magnet</small></button>
+        <button class="suit-button" data-suit="gifts" aria-pressed="false"><span>✦</span>Gifts<small>Shield</small></button>
+      </section>
+      <div class="touch-controls" aria-label="Touch controls">
+        <button class="control control--move" data-key="left" aria-label="Move left">←</button>
+        <button class="control control--move" data-key="right" aria-label="Move right">→</button>
+        <button class="control control--jump" data-key="jump" aria-label="Jump">↑</button>
+        <button class="control control--ability" data-key="ability" aria-label="Use selected suit">✦</button>
+      </div>
+    </main>
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>

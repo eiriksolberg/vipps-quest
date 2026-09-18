@@ -1,0 +1,145 @@
+:root {
+  color: #1e1035;
+  font-family: ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
+  background: #272048;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% -20%, #e2dcff 0 26%, transparent 60%),
+    linear-gradient(135deg, #3a2d66, #171127);
+}
+
+button { font: inherit; }
+
+.game-shell {
+  position: relative;
+  width: min(100vw, 177.77vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #c8c2ff;
+  box-shadow: 0 30px 80px rgb(3 0 18 / 55%);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: auto;
+}
+
+.help-card {
+  position: absolute;
+  z-index: 2;
+  left: clamp(12px, 2vw, 28px);
+  bottom: clamp(12px, 2vw, 28px);
+  max-width: min(48ch, calc(100% - 24px));
+  padding: 11px 15px;
+  border: 3px solid #25102d;
+  border-radius: 13px;
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 4px 0 #25102d, 0 7px 18px rgb(36 16 70 / 20%);
+  font-size: clamp(11px, 1.2vw, 16px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.help-card__eyebrow {
+  display: block;
+  margin-bottom: 2px;
+  color: #e6471e;
+  font-size: .72em;
+  letter-spacing: .12em;
+}
+
+.suit-dock {
+  position: absolute;
+  z-index: 2;
+  top: 104px;
+  right: 18px;
+  display: flex;
+  align-items: stretch;
+  gap: 5px;
+  padding: 7px;
+  border: 3px solid #25102d;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 86%);
+  box-shadow: 0 4px 0 #25102d, 0 7px 18px rgb(36 16 70 / 18%);
+}
+
+.suit-dock__title {
+  align-self: center;
+  margin: 0 5px 0 3px;
+  color: #5b3b92;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.suit-button {
+  min-width: 54px;
+  padding: 4px 5px 3px;
+  border: 2px solid #25102d;
+  border-radius: 10px;
+  background: #ede5ff;
+  color: #25102d;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.suit-button span { display: block; margin-bottom: 2px; color: #ff5d2e; font-size: 18px; }
+.suit-button small { display: block; margin-top: 2px; color: #5d3a87; font-size: 8px; font-weight: 900; }
+.suit-button.is-active { background: #ff6b30; color: #fff; box-shadow: inset 0 -3px 0 rgb(126 42 30 / 26%); }
+.suit-button.is-active span, .suit-button.is-active small { color: #fff8ed; }
+
+.touch-controls {
+  position: absolute;
+  z-index: 3;
+  right: 16px;
+  bottom: 16px;
+  display: none;
+  gap: 8px;
+}
+
+.control {
+  width: 54px;
+  height: 50px;
+  border: 3px solid #25102d;
+  border-radius: 14px;
+  background: #fff8fb;
+  color: #25102d;
+  box-shadow: 0 4px 0 #25102d;
+  font-size: 27px;
+  font-weight: 900;
+  touch-action: none;
+}
+
+.control:active,
+.control.is-pressed { transform: translateY(3px); box-shadow: 0 1px 0 #25102d; }
+.control--jump { background: #ff6b2f; color: white; }
+.control--ability { background: #b998ff; color: #25102d; }
+
+@media (hover: none), (pointer: coarse) {
+  .touch-controls { display: flex; }
+  .help-card { right: 16px; bottom: 78px; }
+  .suit-dock { top: 100px; right: 10px; }
+}
+
+@media (max-width: 520px) {
+  .help-card { font-size: 10px; padding: 8px 10px; }
+  .touch-controls { right: 10px; bottom: 10px; }
+  .control { width: 46px; height: 43px; font-size: 22px; }
+  .suit-dock { transform: scale(.82); transform-origin: top right; }
+}
